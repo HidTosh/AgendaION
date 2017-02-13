@@ -4,3 +4,10 @@
 node_modules/
 platforms/
 plugins/
+.bowerrc
+.editorconfig
+bower
+config
+gulpfile
+ionic.config
+package
