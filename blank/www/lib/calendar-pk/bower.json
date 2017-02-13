@@ -1,0 +1,20 @@
+{
+  "name": "calendar-pk",
+  "version": "0.3.10",
+  "main": [
+    "dist/css/calendar.css",
+    "dist/js/calendar-tpls.js"
+  ],
+  "ignore": [
+    "lib/",
+    "css/",
+    "src/",
+    "template/",
+    ".jshintrc",
+    "gruntfile.js",
+    "package.json"
+  ],
+  "dependencies": {
+    "ionic": "^1.2.4"
+  }
+}

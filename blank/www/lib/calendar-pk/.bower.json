@@ -1,0 +1,31 @@
+{
+  "name": "calendar-pk",
+  "version": "0.3.10",
+  "main": [
+    "dist/css/calendar.css",
+    "dist/js/calendar-tpls.js"
+  ],
+  "ignore": [
+    "lib/",
+    "css/",
+    "src/",
+    "template/",
+    ".jshintrc",
+    "gruntfile.js",
+    "package.json"
+  ],
+  "dependencies": {
+    "ionic": "^1.2.4"
+  },
+  "homepage": "https://github.com/tdehaeze/calendar-pk",
+  "_release": "0.3.10",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.3.10",
+    "commit": "6edc03fb598fa53eeabdde5dfb0fb2861f2c1d9b"
+  },
+  "_source": "https://github.com/tdehaeze/calendar-pk.git",
+  "_target": "^0.3.10",
+  "_originalSource": "calendar-pk",
+  "_direct": true
+}
