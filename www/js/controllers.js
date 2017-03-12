@@ -40,6 +40,23 @@ var url = 'https://beaappli-4194c.firebaseio.com/items.json';
      }
      }).then(function(result) {
     swal(JSON.stringify(result));
+
+        console.log(result[0])
+        console.log(result[1])
+    
+        if (result[1]) {
+          id++;
+          var postData = {
+            "name": result[1],
+            "id": id,
+            "date": result[0]
+
+          };
+          $http.post(url, postData).success(function(data) {
+            $scope.items = getItems();
+          });
+        }
+
     });
 
 
@@ -52,18 +69,7 @@ var month = date.getMonth();
 //    var name = prompt("Planifier un évenement : ", "évenement"); 
     //var name = window.prompt("Write your name", "Name");
     //alert(name);   
-        if (name) {
-          id++;
-          var postData = {
-            "name": name,
-            "id": id,
-            "date": event.timeStamp
-
-          };
-          $http.post(url, postData).success(function(data) {
-            $scope.items = getItems();
-          });
-        }
+    
   
     function getItems() {
       var items = [];
