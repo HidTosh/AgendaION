@@ -7,6 +7,11 @@
                 'MMM/dd,yyyy,HH:mm'}} - {{event.endTime|date:'MMM/dd,yyyy,HH:mm'}}, {{event.title}}
     </div>
 
+   <div class="alert alert-success" ng-repeat="item in items">
+        {{item.date}}
+        {{item.name}}
+    </div>
+
        <div class="btn-toolbar">
                 <div class="btn-group">
                     <button type="button" class="btn btn-default" ng-class="{active:mode==='month'}"
@@ -37,10 +42,9 @@
                     		  time-selected="onTimeSelected(selectedTime)"
 	     ></calendar>
 
-
-
 </section>
-
-
   </ion-content>
+
+
+
 </ion-view>

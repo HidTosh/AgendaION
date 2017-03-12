@@ -9,5 +9,5 @@ plugins/
 bower
 config
 gulpfile
-ionic.config
-package
+# ionic.config
+# package

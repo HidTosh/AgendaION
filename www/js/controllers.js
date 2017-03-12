@@ -2,41 +2,82 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('ChatsCtrl', function($scope) {
+.controller('ChatsCtrl', function($scope, $http) {
+var url = 'https://beaappli-4194c.firebaseio.com/items.json';
 
 'use strict';
     $scope.changeMode = function (mode) {
         $scope.mode = mode;
     };
 
+    var id = 0;
     $scope.onDateSelected = function (selectedDate) {
     //$scope.items = getItems();
-    var name = prompt("Planifier un évenement : ");
+
+        var today = new Date(),
+            currentCalendarDate = new Date($scope.currentDate);
+        console.log(currentCalendarDate)
+
+        today.setHours(0, 0, 0, 0);
+        currentCalendarDate.setHours(0, 0, 0, 0);
+        today.getTime() === currentCalendarDate.getTime();
+
+
+    swal({
+    title: 'Add envent',
+    html: '<input id="date-input1" class="swal2-input" value='+$scope.currentDate+' disabled>' +
+    '<input id="title-input2" class="swal2-input" placeholder="Appuyer pour entrer un titre">',
+    showCancelButton: true, 
+     preConfirm: function() {
+       return new Promise(function(resolve) {
+       if (true) {
+        resolve([
+          document.getElementById('date-input1').value,
+          document.getElementById('title-input2').value
+        ]);
+       }
+      });
+     }
+     }).then(function(result) {
+    swal(JSON.stringify(result));
+    });
+
+
+//var d = new Date(event.timeStamp * 100000000);
+/*var date = new Date(event.timeStamp * 31536000);
+var month = date.getMonth();
+*/        
+
+
+//    var name = prompt("Planifier un évenement : ", "évenement"); 
+    //var name = window.prompt("Write your name", "Name");
+    //alert(name);   
         if (name) {
+          id++;
           var postData = {
-            "name": name
+            "name": name,
+            "id": id,
+            "date": event.timeStamp
+
           };
           $http.post(url, postData).success(function(data) {
             $scope.items = getItems();
           });
         }
-    /*function getItems() {
+  
+    function getItems() {
       var items = [];
       $http.get(url).success(function(data) {
         angular.forEach(data, function(value, key) {
           var name = {name: value.name};
             items.push(name);
+          var date = {date: value.date};
+            items.push(date);  
         });
       });
       return items;
-    }*/
-
-//var d = new Date(event.timeStamp * 100000000);
-/*var date = new Date(event.timeStamp * 31536000);
-var month = date.getMonth();
-*/        console.log(event.timeStamp);
-          console.log(event.srcElement.innerText);
-    };
+    }
+};
 
     $scope.today = function () {
         $scope.currentDate = new Date();
@@ -60,12 +101,12 @@ var month = date.getMonth();
     };
 
     $scope.loadEvents = function () {
-        $scope.eventSource = createRandomEvents();
+      //  $scope.eventSource = createRandomEvents();
     };
 
 
 
-    function createRandomEvents() {
+    /*function createRandomEvents() {
         var events = [];
         for (var i = 0; i < 50; i += 1) {
             var date = new Date();
@@ -100,7 +141,7 @@ var month = date.getMonth();
             }
         }
         return events;
-    }
+    }*/
 
 })
 
